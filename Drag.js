@@ -8,7 +8,6 @@ class draggable {
     this.list = options.list;
 
     if (options.update) this.update = options.update;
-
     for (let listItem of options.el.children) {
       this.addDnDHandlers(listItem);
     }
@@ -30,7 +29,6 @@ class draggable {
 
   addDnDHandlers(element) {
     element.setAttribute("draggable", true);
-
     element.addEventListener("dragstart", this.handleDragStart.bind(this));
     element.addEventListener("drageneter", this.handleDragEneter.bind(this));
     element.addEventListener("dragover", this.handleDragOver.bind(this));
@@ -51,7 +49,6 @@ class draggable {
 
   handleDragOver(e) {
     if (e.preventDefault) e.preventDefault();
-
     e.target.classList.add("over");
   }
 
@@ -68,6 +65,7 @@ class draggable {
       target.insertAdjacentHTML("beforebegin", dropHTML);
       this.addDnDHandlers(target.previousSibling);
     }
+
     e.target.classList.remove("over");
   }
 
@@ -82,4 +80,5 @@ class draggable {
       );
     this.update(newList);
   }
+  
 }
